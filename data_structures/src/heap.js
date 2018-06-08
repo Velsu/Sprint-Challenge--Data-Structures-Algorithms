@@ -3,10 +3,9 @@ const heapsort = arr => {
   const sorted = [];
   const heap = new Heap();
   arr.forEach(n => heap.insert(n));
-  const size = heap.storage.length;
 
   while (heap.getSize()) {
-    sorted[size - 1] = heap.delete();
+    sorted[heap.getSize() - 1] = heap.delete();
   }
 
   return sorted;
@@ -83,3 +82,5 @@ module.exports = {
   Heap,
   heapsort
 };
+
+console.log(heapsort([2, 4, 3, 8, 7, 100, 90, 82]));
