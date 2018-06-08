@@ -7,12 +7,24 @@ class BinarySearchTree {
 
   depthFirstForEach(cb) {
     /* Your code here */
-    
+    cb(this.value);
+    if (this.left) this.left.depthFirstForEach(cb);
+    if (this.right) this.right.depthFirstForEach(cb);
   }
 
   breadthFirstForEach(cb) {
     /* Your code here */
+    const queue = [];
 
+    queue.push(this);
+
+    while (queue.length > 0) {
+      if (queue[0].left) queue.push(queue[0].left);
+      if (queue[0].right) queue.push(queue[0].right);
+
+      cb(queue[0].value);
+      queue.shift();
+    }
   }
 
   insert(value) {
